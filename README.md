@@ -1,2 +1,2 @@
-# snapp.ink.face
+# snapp-ink-face
 Face development of snapp.ink
