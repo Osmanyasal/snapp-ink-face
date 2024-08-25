@@ -4,7 +4,7 @@ class AppImages {
   static const String filters = 'assets/images/filters.png';
   static const String aiFilters = 'assets/images/ai_filters.png';
   static const String gallery = 'assets/images/gallery.png';
-  static const String camera = 'assets/images/camera.png';
+  static const String camera = 'assets/images/retro_camera.png';
 }
 
 class Filters {
