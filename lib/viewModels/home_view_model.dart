@@ -37,7 +37,7 @@ class HomeViewModel extends ChangeNotifier {
   bool get seeOldPicture => _seeOldPicture;
 
   final List<Map<String, String>> _filters = [
-    {"filter": Filters.normalImage, "name": "add"},
+    // {"filter": Filters.normalImage, "name": "add"},
 
     {"filter": Filters.vintage_old1, "name": "Vintage-1"},
     {"filter": Filters.vintage_old1n, "name": "Vintage-1n"},
