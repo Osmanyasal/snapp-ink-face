@@ -38,6 +38,22 @@ class HomeViewModel extends ChangeNotifier {
 
   final List<Map<String, String>> _filters = [
     {"filter": Filters.normalImage, "name": "add"},
+
+    {"filter": Filters.vintage_old1, "name": "Vintage-1"},
+    {"filter": Filters.vintage_old1n, "name": "Vintage-1n"},
+    {"filter": Filters.vintage_old2, "name": "Vintage-2"},
+    {"filter": Filters.vintage_old2n, "name": "Vintage-2n"},
+    {"filter": Filters.vintage_old3, "name": "Vintage-3"},
+    {"filter": Filters.vintage_old3n, "name": "Vintage-3n"},
+    {"filter": Filters.vintage_old4, "name": "Vintage-4"},
+    {"filter": Filters.vintage_old4n, "name": "Vintage-4n"},
+    {"filter": Filters.vintage_old5, "name": "Vintage-5"},
+    {"filter": Filters.vintage_old5n, "name": "Vintage-5n"},
+    {"filter": Filters.vintage_old6, "name": "Vintage-6"},
+    {"filter": Filters.vintage_old6n, "name": "Vintage-6n"},
+    {"filter": Filters.vintage_old7, "name": "Vintage-7"},
+    {"filter": Filters.vintage_old7n, "name": "Vintage-7n"},
+
     {"filter": Filters.normalImage, "name": "Normal"},
     {"filter": Filters.grayScale, "name": "Grey Scale"},
     {"filter": Filters.artistic, "name": "Artistic"},
@@ -53,6 +69,7 @@ class HomeViewModel extends ChangeNotifier {
   final List<Map<String, String>> _aiFilters = [
     {"filter": Filters.normalImage, "name": "add"},
     {"filter": Filters.normalImage, "name": "Normal"},
+    {"filter": AiFilters.superman, "name": "Superman"},
     {"filter": AiFilters.catFace, "name": "Cat Face"},
     {"filter": AiFilters.tigerFace, "name": "Tiger Face"},
   ];
