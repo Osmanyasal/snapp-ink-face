@@ -23,6 +23,7 @@ class Filters {
   static const String sketch_8 = 'assets/images/filters/sketch_8.jpg';
   static const String sketch_12 = 'assets/images/filters/sketch_12.jpg';
   static const String sketch_16 = 'assets/images/filters/sketch_16.jpg';
+  static const String sketch_32 = 'assets/images/filters/sketch_32.jpg';
 
   static const String vintage_old1 = 'assets/images/filters/vintage_old1.jpg';
   static const String vintage_old2 = 'assets/images/filters/vintage_old2.jpg';

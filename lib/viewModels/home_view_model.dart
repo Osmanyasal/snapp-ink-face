@@ -49,6 +49,7 @@ class HomeViewModel extends ChangeNotifier {
     {"filter": Filters.sketch_8, "name": "Sketch 3"},
     {"filter": Filters.sketch_12, "name": "Sketch 4"},
     {"filter": Filters.sketch_16, "name": "Sketch 5"},
+    {"filter": Filters.sketch_32, "name": "Sketch 6"},
     {"filter": Filters.vintage_old1, "name": "Vintage 1"},
     {"filter": Filters.vintage_old1n, "name": "Vintage 1n"},
     {"filter": Filters.vintage_old2, "name": "Vintage 2"},
