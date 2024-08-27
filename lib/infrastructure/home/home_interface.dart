@@ -7,4 +7,12 @@ abstract class HomeInterface {
     required String sessionId,
     required XFile image,
   });
+  Future<ResponseWrapper<dynamic>> applyFilter({
+    required String filterName,
+    required String sessionId,
+  });
+  Future<ResponseWrapper<dynamic>> applyAiFilter({
+    required String aiFilterName,
+    required String sessionId,
+  });
 }

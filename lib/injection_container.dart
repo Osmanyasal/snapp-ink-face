@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:filter/infrastructure/home/api/apply_ai_filter_api.dart';
+import 'package:filter/infrastructure/home/api/apply_filter_api.dart';
 import 'package:filter/infrastructure/home/api/register_service_api.dart';
 import 'package:filter/viewModels/home_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -31,6 +33,12 @@ registerApiCalls() {
   serviceLocator.registerLazySingleton(() => RegisterServiceApi(
         dio: serviceLocator(),
       ));
+  serviceLocator.registerLazySingleton(() => ApplyFilterApi(
+        dio: serviceLocator(),
+      ));
+  serviceLocator.registerLazySingleton(() => ApplyAiFilterApi(
+        dio: serviceLocator(),
+      ));
 }
 
 registerViewModel() {
@@ -42,6 +50,8 @@ registerViewModel() {
 registerRepository() {
   serviceLocator.registerLazySingleton(() => HomeRepository(
         registerServiceApi: serviceLocator(),
+        applyFilterApi: serviceLocator(),
+        applyAiFilterApi: serviceLocator(),
       ));
 }
 
