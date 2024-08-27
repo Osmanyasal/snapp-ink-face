@@ -231,4 +231,60 @@ class HomeViewModel extends ChangeNotifier {
       );
     }
   }
+
+  void applyFilter({required String filterName}) async {
+    try {
+      final sessionId = getRandomString(28);
+      var res = await catalogFacadeService.applyFilter(
+        filterName: filterName,
+        sessionId: sessionId,
+      );
+      if (res.status!.contains('error')) {
+        showToast(
+          message: res.message!,
+          context: NavigationService.navigatorKey.currentContext!,
+        );
+        return;
+      }
+      final responseData = res.data!;
+      if (responseData.isEmpty) {
+        return;
+      }
+    } on DioException catch (e) {
+      handleDioError(e);
+    } catch (e) {
+      showToast(
+        message: "Something went wrong $e",
+        context: NavigationService.navigatorKey.currentContext!,
+      );
+    }
+  }
+
+  void applyAiFilter({required String aiFilterName}) async {
+    try {
+      final sessionId = getRandomString(28);
+      var res = await catalogFacadeService.applyAiFilter(
+        aiFilterName: aiFilterName,
+        sessionId: sessionId,
+      );
+      if (res.status!.contains('error')) {
+        showToast(
+          message: res.message!,
+          context: NavigationService.navigatorKey.currentContext!,
+        );
+        return;
+      }
+      final responseData = res.data!;
+      if (responseData.isEmpty) {
+        return;
+      }
+    } on DioException catch (e) {
+      handleDioError(e);
+    } catch (e) {
+      showToast(
+        message: "Something went wrong $e",
+        context: NavigationService.navigatorKey.currentContext!,
+      );
+    }
+  }
 }
