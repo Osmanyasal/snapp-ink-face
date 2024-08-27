@@ -14,13 +14,15 @@ class Filters {
   static const String removebg = 'assets/images/filters/removebg.jpg';
   static const String popup_red = 'assets/images/filters/popup_red.jpg';
   static const String gray_scale = 'assets/images/filters/gray_scale.jpg';
+  static const String colorise1 = 'assets/images/filters/colorise_cold.jpg';
+  static const String colorise2 = 'assets/images/filters/colorise_warm.jpg';
   static const String sepia = 'assets/images/filters/sepia.jpg';
   
-  static const String watercolor_3 = 'assets/images/filters/watercolor_3.jpg';
-  static const String watercolor_5 = 'assets/images/filters/watercolor_5.jpg';
-  static const String watercolor_8 = 'assets/images/filters/watercolor_8.jpg';
-  static const String watercolor_12 = 'assets/images/filters/watercolor_12.jpg';
-  static const String watercolor_16 = 'assets/images/filters/watercolor_16.jpg';
+  static const String sketch_3 = 'assets/images/filters/sketch_3.jpg';
+  static const String sketch_5 = 'assets/images/filters/sketch_5.jpg';
+  static const String sketch_8 = 'assets/images/filters/sketch_8.jpg';
+  static const String sketch_12 = 'assets/images/filters/sketch_12.jpg';
+  static const String sketch_16 = 'assets/images/filters/sketch_16.jpg';
 
   static const String vintage_old1 = 'assets/images/filters/vintage_old1.jpg';
   static const String vintage_old2 = 'assets/images/filters/vintage_old2.jpg';
