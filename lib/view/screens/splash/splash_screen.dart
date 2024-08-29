@@ -20,13 +20,11 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     FlutterNativeSplash.remove();
-    
-
     _controller = AnimationController(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
-    _animation = Tween<double>(begin: 0.5, end: 62).animate(
+    _animation = Tween<double>(begin: 1, end: 100).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeIn,
@@ -37,7 +35,12 @@ class _SplashScreenState extends State<SplashScreen>
         Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       }
     });
-    _controller.forward();
+
+  // Add a delay before starting the animation
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      _controller.forward();
+    });
+    // _controller.forward();
   }
 
   @override
