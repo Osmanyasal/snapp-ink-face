@@ -20,6 +20,8 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     FlutterNativeSplash.remove();
+    
+
     _controller = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
