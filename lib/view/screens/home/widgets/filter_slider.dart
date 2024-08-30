@@ -8,6 +8,20 @@ import 'package:provider/provider.dart';
 import '../../../../common/colors.dart';
 import '../../../commonWidgets/filter_dialog.dart';
 
+
+class CustomScrollPhysics extends ClampingScrollPhysics {
+  static final SpringDescription customSpring =
+      SpringDescription.withDampingRatio(mass: 2, stiffness: 1);
+
+  @override
+  CustomScrollPhysics applyTo(ScrollPhysics? ancestor) {
+    return CustomScrollPhysics();
+  }
+  
+  @override
+  SpringDescription get spring => customSpring;
+}
+
 class FilterSlider extends StatelessWidget {
   const FilterSlider({super.key});
 
@@ -26,6 +40,7 @@ class FilterSlider extends StatelessWidget {
               autoPlay: false,
               enableInfiniteScroll: false,
               viewportFraction: 0.2,
+              scrollPhysics: CustomScrollPhysics()
             ),
             items: homeViewModel.typeOfFilter == 1
                 ? homeViewModel.filters.asMap().entries.map((entry) {
