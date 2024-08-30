@@ -23,7 +23,7 @@ class Urls {
 
 * In all requests, send "id" as a query param!
 * In all requests, send "apiKey" as a header param!
-
+* Image is sent as-is in binary "we used postman to test out api and selected image under /body/binary/
 
 ***** Example Flows *****
 
