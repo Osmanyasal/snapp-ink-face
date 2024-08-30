@@ -10,7 +10,7 @@ class Urls {
 /*  TODO
 ***** Rules *****
 
-* Call REGISTER HTTP POST services ONLY when you select a photo from your library !
+* Call REGISTER HTTP POST services ONLY when you select a photo from the library !
 * Call /register?id= if you select at the beginning, call /register/target?id= if you select from the filters (by selecting add icon)
 
 * Call filter services to apply a filter onto images registered. Use http get http://192.168.1.23:18080/filters/<file_name>?id=
