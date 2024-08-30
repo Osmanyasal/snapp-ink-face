@@ -11,7 +11,7 @@ import '../../../commonWidgets/filter_dialog.dart';
 
 class CustomScrollPhysics extends ClampingScrollPhysics {
   static final SpringDescription customSpring =
-      SpringDescription.withDampingRatio(mass: 2, stiffness: 1);
+      SpringDescription.withDampingRatio(mass: .5, stiffness: 1);
 
   @override
   CustomScrollPhysics applyTo(ScrollPhysics? ancestor) {
