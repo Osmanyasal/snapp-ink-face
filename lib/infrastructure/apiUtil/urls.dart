@@ -30,13 +30,13 @@ class Urls {
 ---- Usual Flow Example ----
 * user selects a photo from the galary or shoot one -> call http post http://192.168.1.23:18080/register?id= service by placing "id" as query param and apiKey as http header param.
 * user selects a filter named sketch-5.jpg from the /images/filters/ 
-* upon click "apply sketch" -> call http get http://192.168.1.23:18080/filters/sketch/5?id= service by placing "id" as query param and apiKey as http header param.
+* upon click "apply sketch" -> call http get http://192.168.1.23:18080/filters/sketch/5?id= service by placing "id" as query param and apiKey as http header param and resulting image will return.
 
 
 ---- Add Photo Example ----
 * user selects a photo from the galary or shoot one -> call http post http://192.168.1.23:18080/register?id= service by placing "id" as query param and apiKey as http header param.
 * user selects "add photo" in ai filters -> call http post http://192.168.1.23:18080/register/target?id= service by placing "id" as query param and apiKey as http header param.
-* upon click "apply custom" -> call http get http://192.168.1.23:18080/filters/face-swap?id= service by placing "id" as query param and apiKey as http header param.
+* upon click "apply custom" -> call http get http://192.168.1.23:18080/filters/face-swap?id= service by placing "id" as query param and apiKey as http header param and resulting image will return.
 
 */
 
