@@ -15,8 +15,8 @@ class Filters {
   static const String removebg = 'assets/images/filters/rembg.jpg';
   static const String popup_red = 'assets/images/filters/popup-red.jpg';
   static const String grayscale = 'assets/images/filters/grayscale.jpg';
-  static const String colorisation_cold = 'assets/images/filters/colorisation_cold.jpg';
-  static const String colorisation_warm = 'assets/images/filters/colorisation_warm.jpg';
+  static const String colorisation_cold = 'assets/images/filters/colorisation-cold.jpg';
+  static const String colorisation_warm = 'assets/images/filters/colorisation-warm.jpg';
   static const String sepia = 'assets/images/filters/sepia.jpg';
   
   static const String sketch_3 = 'assets/images/filters/sketch-3.jpg';
@@ -42,19 +42,11 @@ class Filters {
   static const String vintage_old6n = 'assets/images/filters/vintage-old6n.jpg';
   static const String vintage_old7n = 'assets/images/filters/vintage-old7n.jpg';
 
-  // static const String grayScale = 'assets/images/filters/gray_scale.png';
-  // static const String highExposure = 'assets/images/filters/high_exposure.png';
-  // static const String love = 'assets/images/filters/love.png';
-  // static const String orange = 'assets/images/filters/orange.png';
-  // static const String sepia = 'assets/images/filters/sepia.png';
-  // static const String vintage = 'assets/images/filters/vintage.png';
-  // static const String artistic = 'assets/images/filters/artistic.png';
-  // static const String lighting = 'assets/images/filters/lighting.png';
 }
 
 class AiFilters { 
   static const String superman = 'assets/images/ai_filters/ss.jpg';
   static const String cartoonFace = 'assets/images/ai_filters/cartoon.png';
-  static const String catFace = 'assets/images/ai_filters/cat_face.jpeg';
-  static const String tigerFace = 'assets/images/ai_filters/tiger_face.png';
+  static const String catFace = 'assets/images/ai_filters/cat-face.jpeg';
+  static const String tigerFace = 'assets/images/ai_filters/tiger-face.png';
 }
