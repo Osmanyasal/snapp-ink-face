@@ -21,7 +21,7 @@ class Urls {
 
 * call terminate-session http get service when app is closed.
 
-* In all requests, send "id" as a query param!
+* In all requests, send "id" as a query param! "id" is an unique identifier it is implemented in the app already use that.
 * In all requests, send "apiKey" as a header param!
 * Image is sent as-is in binary "we used postman to test out api and selected image under /body/binary/
 
