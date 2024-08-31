@@ -19,7 +19,7 @@ class Urls {
     * so if file name is vintage-old1n.png, url: http get http://192.168.1.23:18080/filters/vintage/old1?id=
     * a file name grayscale would be normal like url: http get http://192.168.1.23:18080/filters/grayscale?id=
 
-* call terminate-session service when app is closed.
+* call terminate-session http get service when app is closed.
 
 * In all requests, send "id" as a query param!
 * In all requests, send "apiKey" as a header param!
