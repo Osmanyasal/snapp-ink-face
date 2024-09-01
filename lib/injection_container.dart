@@ -79,7 +79,7 @@ Dio getNetworkObj() {
       onRequest: (options, handler) async {
         options.headers['Accept'] = '*/*';
         options.headers['Access-Control-Allow-Origin'] = '*';
-
+        options.headers['apikey'] = Urls.apiKey; // API anahtarını burada ekleyin 
         handler.next(options);
       },
     ),

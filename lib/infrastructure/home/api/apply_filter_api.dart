@@ -9,10 +9,9 @@ class ApplyFilterApi {
 
   Future<dynamic> applyFilter({
     required String filterName,
-    required String sessionId,
   }) async {
     Response response = await dio.get(
-      '${Urls.applyFilter}$filterName?id=$sessionId',
+      '${Urls.applyFilter}${Urls.applyFilter}${filterName.replaceAll('-', '/')}?id=${Urls.sessionId}',
     );
     return response;
   }

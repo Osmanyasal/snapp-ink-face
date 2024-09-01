@@ -20,11 +20,11 @@ class HomeRepository implements HomeInterface {
 
   @override
   Future<ResponseWrapper<dynamic>> registerService({
-    required String sessionId,
+
     required XFile image,
   }) async {
     Response response = await registerServiceApi.registerService(
-      sessionId: sessionId,
+     
       image: image,
     );
     var res = ResponseWrapper<dynamic>();
@@ -37,11 +37,10 @@ class HomeRepository implements HomeInterface {
   @override
   Future<ResponseWrapper<dynamic>> applyFilter({
     required String filterName,
-    required String sessionId,
+
   }) async {
     Response response = await applyFilterApi.applyFilter(
       filterName: filterName,
-      sessionId: sessionId,
     );
     var res = ResponseWrapper<dynamic>();
     res.status = response.data[PrefsKeys.status];
