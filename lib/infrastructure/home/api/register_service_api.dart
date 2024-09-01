@@ -6,27 +6,23 @@ import '../../apiUtil/urls.dart';
 
 class RegisterServiceApi {
   RegisterServiceApi({required this.dio});
-
   final Dio dio;
-
   Future<dynamic> registerService({
-    required String sessionId,
     required XFile image,
   }) async {
-    FormData formData = FormData();
-    formData.files.add(
-      MapEntry(
-        'image',
-        await MultipartFile.fromFile(
-          image.path,
-          filename: image.name,
-          contentType: MediaType("image", "jpeg"),
-        ),
-      ),
-    );
+    final bytes = await image.readAsBytes();
+    final headers = {
+      'content-type': 'image/jpeg',
+    };
+
+    print(
+        "${Urls.kBaseUrl}${Urls.registerApi}${Urls.sessionId} İşlem başarılı. Bu şekilde bir dosya gönderim olayı başlatılacak");
     Response response = await dio.post(
-      Urls.registerApi + sessionId,
-      data: formData,
+      Urls.kBaseUrl + Urls.registerApi + Urls.sessionId,
+      data: bytes,
+      options: Options(
+        headers: headers,
+      ),
     );
     return response;
   }

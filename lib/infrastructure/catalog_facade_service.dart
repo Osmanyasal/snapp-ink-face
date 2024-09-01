@@ -17,11 +17,11 @@ class CatalogFacadeService {
   final HomeRepository homeRepository;
 
   Future<ResponseWrapper<dynamic>> registerService({
-    required String sessionId,
+
     required XFile image,
   }) async {
     return await homeRepository.registerService(
-      sessionId: sessionId,
+
       image: image,
     );
   }
@@ -32,7 +32,7 @@ class CatalogFacadeService {
   }) async {
     return await homeRepository.applyFilter(
       filterName: filterName,
-      sessionId: sessionId,
+
     );
   }
 

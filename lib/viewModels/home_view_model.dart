@@ -9,7 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../common/images.dart';
+import '../infrastructure/apiUtil/urls.dart';
 import '../infrastructure/catalog_facade_service.dart';
+import '../infrastructure/home/api/register_service_api.dart';
+import '../injection_container.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required this.catalogFacadeService});
@@ -200,6 +203,8 @@ class HomeViewModel extends ChangeNotifier {
       _selectedFile = pickedFile;
       _processedImage = "";
       _typeOfFilter = 1;
+      RegisterServiceApi(dio: serviceLocator<Dio>())
+          .registerService(image: pickedFile);
       notifyListeners();
       Navigator.pop(NavigationService.navigatorKey.currentContext!);
     }
@@ -207,11 +212,11 @@ class HomeViewModel extends ChangeNotifier {
 
   void registerService() async {
     try {
-      final sessionId = getRandomString(28);
+      Urls.sessionId = getRandomString(28);
       var res = await catalogFacadeService.registerService(
         image: _selectedFile,
-        sessionId: sessionId,
       );
+      print(res.status);
       if (res.status!.contains('error')) {
         showToast(
           message: res.message!,
@@ -226,6 +231,7 @@ class HomeViewModel extends ChangeNotifier {
     } on DioException catch (e) {
       handleDioError(e);
     } catch (e) {
+      print(e);
       showToast(
         message: "Something went wrong $e",
         context: NavigationService.navigatorKey.currentContext!,

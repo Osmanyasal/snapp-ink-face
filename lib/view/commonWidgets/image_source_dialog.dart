@@ -1,4 +1,3 @@
-import 'package:filter/main.dart';
 import 'package:filter/viewModels/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

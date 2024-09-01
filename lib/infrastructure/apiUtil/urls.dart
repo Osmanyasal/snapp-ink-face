@@ -4,7 +4,12 @@ class Urls {
   static const String registerTargetApi = '/register/target?id=';
   static const String applyFilter = '/filters/';
   static const String terminateSession = '/terminate-session?id=';
-  static const String apiKey = '';  // this will be sent in http header NOT AS A QUERY PARAM
+  static const String apiKey =
+      ''; // this will be sent in http header NOT AS A QUERY PARAM
+
+  static late final String sessionId; //The sessionId variable is declared as static late final. 
+  //This combination is intended to ensure that the variable is assigned a value only once during the program's runtime.
+
 }
 
 /*  TODO
