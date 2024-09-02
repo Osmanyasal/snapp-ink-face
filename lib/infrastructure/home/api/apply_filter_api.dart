@@ -10,9 +10,14 @@ class ApplyFilterApi {
   Future<dynamic> applyFilter({
     required String filterName,
   }) async {
+
     Response response = await dio.get(
-      '${Urls.applyFilter}${Urls.applyFilter}${filterName.replaceAll('-', '/')}?id=${Urls.sessionId}',
+      "${Urls.applyFilter}${filterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
+      options: Options(responseType: ResponseType.bytes),
     );
+
+   
+
     return response;
   }
 }

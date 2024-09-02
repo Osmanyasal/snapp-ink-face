@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:filter/viewModels/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,17 +29,9 @@ class FileImageWidget extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: homeViewModel.typeOfFilter == 0
-                  ? homeViewModel.seeOldPicture
-                      ? FileImage(
-                          File(imagePath),
-                        )
-                      : AssetImage(homeViewModel.processedImage)
-                  : homeViewModel.processedImage.isEmpty
-                      ? FileImage(
-                          File(imagePath),
-                        )
-                      : AssetImage(homeViewModel.processedImage),
+              image: homeViewModel.imageBytes != null
+                  ? MemoryImage(homeViewModel.imageBytes!)
+                  : FileImage(File(imagePath)),
               fit: BoxFit.contain,
             ),
           ),
@@ -97,6 +88,13 @@ class FileImageWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     GestureDetector(
+                      onTap: homeViewModel.seeOldPicture
+                          ? () {
+                              homeViewModel.memoryImageBytes = null;
+                              homeViewModel.changePictureView(
+                                  !homeViewModel.seeOldPicture);
+                            }
+                          : null,
                       onLongPressStart: (press) {
                         homeViewModel.changePictureView(true);
                       },
@@ -107,8 +105,8 @@ class FileImageWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(homeViewModel.seeOldPicture
-                              ? "New Picture "
-                              : "Previous picture "),
+                              ? "Previous picture "
+                              : "New Picture "),
                           Card(
                             elevation: 10,
                             color: MyColors.whiteColor,

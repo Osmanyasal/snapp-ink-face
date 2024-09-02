@@ -28,7 +28,6 @@ class CatalogFacadeService {
 
   Future<ResponseWrapper<dynamic>> applyFilter({
     required String filterName,
-    required String sessionId,
   }) async {
     return await homeRepository.applyFilter(
       filterName: filterName,
@@ -38,11 +37,11 @@ class CatalogFacadeService {
 
   Future<ResponseWrapper<dynamic>> applyAiFilter({
     required String aiFilterName,
-    required String sessionId,
+
   }) async {
     return await homeRepository.applyAiFilter(
       aiFilterName: aiFilterName,
-      sessionId: sessionId,
+
     );
   }
 }
