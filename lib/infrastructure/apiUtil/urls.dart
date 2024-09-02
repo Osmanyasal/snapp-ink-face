@@ -3,6 +3,7 @@ class Urls {
   static const String registerApi = '/register?id=';
   static const String registerTargetApi = '/register/target?id=';
   static const String applyFilter = '/filters/';
+  static const String aiFilter = 'face-swap/';
   static const String terminateSession = '/terminate-session?id=';
   static const String apiKey =
       ''; // this will be sent in http header NOT AS A QUERY PARAM

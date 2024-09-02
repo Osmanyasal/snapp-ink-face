@@ -12,6 +12,5 @@ abstract class HomeInterface {
   });
   Future<ResponseWrapper<dynamic>> applyAiFilter({
     required String aiFilterName,
-    required String sessionId,
   });
 }

@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../../../../common/colors.dart';
 import '../../../commonWidgets/filter_dialog.dart';
 
-
 class CustomScrollPhysics extends ClampingScrollPhysics {
   static final SpringDescription customSpring =
       SpringDescription.withDampingRatio(mass: .5, stiffness: 1);
@@ -17,14 +16,16 @@ class CustomScrollPhysics extends ClampingScrollPhysics {
   CustomScrollPhysics applyTo(ScrollPhysics? ancestor) {
     return CustomScrollPhysics();
   }
-  
+
   @override
   SpringDescription get spring => customSpring;
 }
 
+bool goBackToNormalFilter = false;
+bool goBackToNormalFilterAi = false;
+
 class FilterSlider extends StatelessWidget {
   const FilterSlider({super.key});
-
   @override
   Widget build(BuildContext context) {
     double kWidth = MediaQuery.of(context).size.width;
@@ -35,13 +36,12 @@ class FilterSlider extends StatelessWidget {
           right: 0,
           child: CarouselSlider(
             options: CarouselOptions(
-              height: 140.0,
-              enlargeCenterPage: false,
-              autoPlay: false,
-              enableInfiniteScroll: false,
-              viewportFraction: 0.2,
-              scrollPhysics: CustomScrollPhysics()
-            ),
+                height: 140.0,
+                enlargeCenterPage: false,
+                autoPlay: false,
+                enableInfiniteScroll: false,
+                viewportFraction: 0.2,
+                scrollPhysics: CustomScrollPhysics()),
             items: homeViewModel.typeOfFilter == 1
                 ? homeViewModel.filters.asMap().entries.map((entry) {
                     int index = entry.key;
@@ -88,7 +88,8 @@ class FilterSlider extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   homeViewModel.selectFilter(index);
-                                  if (item["name"] != "Normal") {
+                                  if (item["name"] != "Normal" ||
+                                      goBackToNormalFilter) {
                                     showDialog(
                                       context: context,
                                       builder: (context) {
@@ -106,23 +107,57 @@ class FilterSlider extends StatelessWidget {
                                           ),
                                           title: item["name"].toString(),
                                           confirmFunction: () async {
-                                            homeViewModel.applyingFilter(true);
-                                            await Future.delayed(
-                                                const Duration(seconds: 5));
-                                            homeViewModel.applyingFilter(false);
-                                            Navigator.pop(NavigationService
-                                                .navigatorKey.currentContext!);
-                                            homeViewModel.changeFilterType(0);
-                                            homeViewModel
-                                                .changePictureView(false);
-                                            homeViewModel.addProcessedImage(
-                                                item["filter"].toString());
-                                            showToast(
-                                              message:
-                                                  "Your picture is processed",
-                                              context: NavigationService
-                                                  .navigatorKey.currentContext!,
-                                            );
+                                            goBackToNormalFilter =
+                                                index != 0 ? true : false;
+
+                                            try {
+                                              homeViewModel
+                                                  .applyingFilter(true);
+                                              // Navigator.pop sonrasında işlemlerin tamamlanması için kısa bir bekleme süresi ekleyin
+                                              Map<String, String> filter =
+                                                  homeViewModel.filters[index];
+                                              String filterAssetPath =
+                                                  filter["filter"]!;
+                                              String filtername =
+                                                  extractFilterName(
+                                                      filterAssetPath);
+                                              await homeViewModel.applyFilter(
+                                                  filterName: filtername);
+                                              await Future.delayed(
+                                                  const Duration(seconds: 4));
+
+                                              homeViewModel
+                                                  .applyingFilter(false);
+                                              Navigator.pop(NavigationService
+                                                  .navigatorKey
+                                                  .currentContext!);
+                                              homeViewModel.changeFilterType(0);
+                                              homeViewModel
+                                                  .changePictureView(true);
+
+                                              homeViewModel.catalogFacadeService
+                                                  .homeRepository;
+                                              homeViewModel.addProcessedImage(
+                                                  homeViewModel.processedImage);
+
+                                              showToast(
+                                                message:
+                                                    "Your picture is processed",
+                                                context: NavigationService
+                                                    .navigatorKey
+                                                    .currentContext!,
+                                              );
+                                            } catch (e) {
+                                              homeViewModel
+                                                  .applyingFilter(false);
+                                              showToast(
+                                                message:
+                                                    "An error occurred: $e",
+                                                context: NavigationService
+                                                    .navigatorKey
+                                                    .currentContext!,
+                                              );
+                                            }
                                           },
                                           confirmText:
                                               "Apply ${item["name"].toString()}",
@@ -207,7 +242,8 @@ class FilterSlider extends StatelessWidget {
                                   GestureDetector(
                                     onTap: () {
                                       homeViewModel.selectFilter(index);
-                                      if (item["name"] != "Normal") {
+                                      if (item["name"] != "Normal" ||
+                                          goBackToNormalFilterAi) {
                                         showDialog(
                                           context: context,
                                           builder: (context) {
@@ -226,21 +262,38 @@ class FilterSlider extends StatelessWidget {
                                               ),
                                               title: item["name"].toString(),
                                               confirmFunction: () async {
+                                                goBackToNormalFilterAi =
+                                                    index != 1 ? true : false;
                                                 homeViewModel
                                                     .applyingFilter(true);
+
+                                                Map<String, String> filter =
+                                                    homeViewModel
+                                                        .aiFilters[index];
+                                                String filterAssetPath =
+                                                    filter["filter"]!;
+                                                String filtername =
+                                                    extractFilterName(
+                                                        filterAssetPath);
+
+                                                await homeViewModel
+                                                    .applyAiFilter(
+                                                        aiFilterName:
+                                                            filtername);
                                                 await Future.delayed(
-                                                    const Duration(seconds: 5));
+                                                    const Duration(seconds: 4));
                                                 homeViewModel
                                                     .applyingFilter(false);
                                                 Navigator.pop(NavigationService
                                                     .navigatorKey
                                                     .currentContext!);
                                                 homeViewModel
-                                                    .changeFilterType(0);
+                                                    .changeFilterType(1);
                                                 homeViewModel
                                                     .changePictureView(false);
                                                 homeViewModel.addProcessedImage(
-                                                    item["filter"].toString());
+                                                    homeViewModel
+                                                        .processedImage);
                                                 showToast(
                                                   message:
                                                       "Your picture is processed",
@@ -290,4 +343,13 @@ class FilterSlider extends StatelessWidget {
           ));
     });
   }
+}
+
+String extractFilterName(String assetPath) {
+  print("ççç gelen path : $assetPath");
+  int startIndex = assetPath.lastIndexOf('filters/') + 'filters/'.length;
+  int endIndex = assetPath.lastIndexOf('.');
+  String filterName = assetPath.substring(startIndex, endIndex);
+
+  return filterName;
 }

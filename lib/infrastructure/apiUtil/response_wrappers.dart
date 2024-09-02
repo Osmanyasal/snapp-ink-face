@@ -4,7 +4,7 @@ class ResponseWrapper<T> {
   bool? closedKitchen;
   bool? dineInAvailable;
   String? message;
-  String? status;
+  int? status;
   String? totalRowCount;
   int? tableCount;
   bool? specialMessage;

@@ -1,18 +1,23 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:filter/infrastructure/apiUtil/response_wrappers.dart';
+import 'package:filter/injection_container.dart';
 import 'package:filter/utils/global_function.dart';
 import 'package:filter/utils/navigation_service.dart';
 import 'package:filter/view/commonWidgets/image_source_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 
 import '../common/images.dart';
 import '../infrastructure/apiUtil/urls.dart';
 import '../infrastructure/catalog_facade_service.dart';
-import '../infrastructure/home/api/register_service_api.dart';
-import '../injection_container.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required this.catalogFacadeService});
@@ -32,6 +37,9 @@ class HomeViewModel extends ChangeNotifier {
 
   String _processedImage = "";
   String get processedImage => _processedImage;
+
+  Uint8List? _imageBytes;
+  Uint8List? get imageBytes => _imageBytes;
 
   bool _isApplyingFilter = false;
   bool get isApplyingFilter => _isApplyingFilter;
@@ -90,6 +98,11 @@ class HomeViewModel extends ChangeNotifier {
 
   void applyingFilter(bool loading) {
     _isApplyingFilter = loading;
+    notifyListeners();
+  }
+
+  set memoryImageBytes(Uint8List? bytes) {
+    _imageBytes = bytes;
     notifyListeners();
   }
 
@@ -164,11 +177,31 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> saveImageToStorage() async {
     try {
       if (await _requestMediaPermission()) {
-        final ByteData byteData = await rootBundle.load(_processedImage);
-        final Uint8List imageData = byteData.buffer.asUint8List();
+        Uint8List? imageData;
 
+        // Öncelikle processedImage'in geçerli olup olmadığını kontrol et
+        if (_imageBytes != null) {
+          imageData = _imageBytes!;
+        } else if (_processedImage.isNotEmpty) {
+          try {
+            final ByteData byteData = await rootBundle.load(_processedImage);
+            imageData = byteData.buffer.asUint8List();
+          } catch (e) {
+            print("Failed to load _processedImage: $e");
+          }
+        }
+
+        // Eğer _imageBytes null değilse, onu kullanın
+
+        // Eğer imageData hala null ise, hata fırlatın
+        if (imageData == null) {
+          throw Exception("No image data available to save.");
+        }
+
+        // Resmi galeriye kaydet
         final result = await ImageGallerySaver.saveImage(imageData,
             quality: 100, name: "sample_image");
+
         if (result['isSuccess']) {
           showToast(
               message: "Image saved to the Gallery",
@@ -185,8 +218,9 @@ class HomeViewModel extends ChangeNotifier {
       }
     } catch (e) {
       showToast(
-          message: "Saving error!",
+          message: "Saving error: $e",
           context: NavigationService.navigatorKey.currentContext!);
+      print("Saving error: $e");
     }
   }
 
@@ -203,8 +237,10 @@ class HomeViewModel extends ChangeNotifier {
       _selectedFile = pickedFile;
       _processedImage = "";
       _typeOfFilter = 1;
-      RegisterServiceApi(dio: serviceLocator<Dio>())
-          .registerService(image: pickedFile);
+      catalogFacadeService.registerService(
+        image: _selectedFile,
+      );
+      _imageBytes = null;
       notifyListeners();
       Navigator.pop(NavigationService.navigatorKey.currentContext!);
     }
@@ -217,7 +253,7 @@ class HomeViewModel extends ChangeNotifier {
         image: _selectedFile,
       );
       print(res.status);
-      if (res.status!.contains('error')) {
+      if (res.message!.isNotEmpty) {
         showToast(
           message: res.message!,
           context: NavigationService.navigatorKey.currentContext!,
@@ -239,57 +275,89 @@ class HomeViewModel extends ChangeNotifier {
     }
   }
 
-  void applyFilter({required String filterName}) async {
+  Future<void> applyFilter({required String filterName}) async {
+    late ResponseWrapper<dynamic> res;
     try {
-      final sessionId = getRandomString(28);
-      var res = await catalogFacadeService.applyFilter(
-        filterName: filterName,
-        sessionId: sessionId,
-      );
-      if (res.status!.contains('error')) {
-        showToast(
-          message: res.message!,
-          context: NavigationService.navigatorKey.currentContext!,
-        );
-        return;
-      }
-      final responseData = res.data!;
-      if (responseData.isEmpty) {
-        return;
-      }
-    } on DioException catch (e) {
-      handleDioError(e);
+      res = await catalogFacadeService.applyFilter(filterName: filterName);
     } catch (e) {
       showToast(
-        message: "Something went wrong $e",
+        message: res.message ?? "An error occurred",
         context: NavigationService.navigatorKey.currentContext!,
       );
     }
+
+    await applyFilterAll(res);
   }
 
-  void applyAiFilter({required String aiFilterName}) async {
+  Future<void> applyAiFilter({required String aiFilterName}) async {
+    late ResponseWrapper<dynamic> res;
     try {
-      final sessionId = getRandomString(28);
-      var res = await catalogFacadeService.applyAiFilter(
-        aiFilterName: aiFilterName,
-        sessionId: sessionId,
-      );
-      if (res.status!.contains('error')) {
-        showToast(
-          message: res.message!,
-          context: NavigationService.navigatorKey.currentContext!,
-        );
-        return;
-      }
-      final responseData = res.data!;
-      if (responseData.isEmpty) {
-        return;
-      }
-    } on DioException catch (e) {
-      handleDioError(e);
+      res =
+          await catalogFacadeService.applyAiFilter(aiFilterName: aiFilterName);
     } catch (e) {
       showToast(
-        message: "Something went wrong $e",
+        message: res.message ?? "An error occurred",
+        context: NavigationService.navigatorKey.currentContext!,
+      );
+    }
+
+    await applyFilterAll(res);
+  }
+
+  Future<void> applyFilterAll(ResponseWrapper<dynamic> res) async {
+    try {
+      print('Response Status: ${res.status}');
+      if (res.status == null || res.status != 200) {
+        print('Error: Status is not 200 or status is null');
+        showToast(
+          message: res.message ?? "An error occurred",
+          context: NavigationService.navigatorKey.currentContext!,
+        );
+      }
+
+      // Data controll  for is avaible for using &  write path
+      if (res.data != null) {
+        print('Response Data: Data is not null');
+        if (res.data is Uint8List) {
+          print('Response Data Type: Uint8List');
+          final directory = await getTemporaryDirectory();
+          print('Temporary Directory Path: ${directory.path}');
+          try {
+            _imageBytes = res.data;
+            const String fileName = 'memory2.jpg';
+            final filePath = join(directory.path, fileName);
+            final file = File(filePath);
+            await file.writeAsBytes(_imageBytes!);
+            print('File saved successfully at: $filePath');
+            _processedImage = filePath;
+          } catch (e) {
+            print('Error: Failed to write file: $e');
+            showToast(
+              message: "Failed to write file: $e",
+              context: NavigationService.navigatorKey.currentContext!,
+            );
+          }
+        } else {
+          print('Error: Data is not in expected format (Uint8List expected)');
+          showToast(
+            message: "Data is not in expected format. Expected Uint8List.",
+            context: NavigationService.navigatorKey.currentContext!,
+          );
+        }
+      } else {
+        print('Error: No data received');
+        showToast(
+          message: "No data received.",
+          context: NavigationService.navigatorKey.currentContext!,
+        );
+      }
+    } on DioException catch (e) {
+      print('DioError occurred: $e');
+      handleDioError(e);
+    } catch (e) {
+      print('Exception occurred: $e');
+      showToast(
+        message: "Something went wrong: $e",
         context: NavigationService.navigatorKey.currentContext!,
       );
     }
