@@ -88,13 +88,6 @@ class FileImageWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     GestureDetector(
-                      onTap: homeViewModel.seeOldPicture
-                          ? () {
-                              homeViewModel.memoryImageBytes = null;
-                              homeViewModel.changePictureView(
-                                  !homeViewModel.seeOldPicture);
-                            }
-                          : null,
                       onLongPressStart: (press) {
                         homeViewModel.changePictureView(true);
                       },
@@ -105,8 +98,8 @@ class FileImageWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(homeViewModel.seeOldPicture
-                              ? "Previous picture "
-                              : "New Picture "),
+                              ? "New Picture"
+                              : "Previous picture"),
                           Card(
                             elevation: 10,
                             color: MyColors.whiteColor,

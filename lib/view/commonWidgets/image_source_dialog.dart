@@ -7,7 +7,8 @@ import '../../common/colors.dart';
 import '../../common/images.dart';
 
 class ImageSourceDialog extends StatelessWidget {
-  const ImageSourceDialog({super.key});
+  final bool aiFilterAddPhotoButton;
+  const ImageSourceDialog({super.key, required this. aiFilterAddPhotoButton});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class ImageSourceDialog extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                context.read<HomeViewModel>().pickImage(ImageSource.gallery);
+                context.read<HomeViewModel>().pickImage(ImageSource.gallery,aiFilterAddPhotoButton);
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -50,7 +51,7 @@ class ImageSourceDialog extends StatelessWidget {
             const SizedBox(width: 20),
             GestureDetector(
               onTap: () {
-                context.read<HomeViewModel>().pickImage(ImageSource.camera);
+                context.read<HomeViewModel>().pickImage(ImageSource.camera,aiFilterAddPhotoButton);
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,

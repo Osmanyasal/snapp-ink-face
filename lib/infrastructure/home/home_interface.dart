@@ -6,6 +6,9 @@ abstract class HomeInterface {
   Future<ResponseWrapper<dynamic>> registerService({
     required XFile image,
   });
+    Future<ResponseWrapper<dynamic>> registerAiService({
+    required XFile image,
+  });
   Future<ResponseWrapper<dynamic>> applyFilter({
     required String filterName,
 

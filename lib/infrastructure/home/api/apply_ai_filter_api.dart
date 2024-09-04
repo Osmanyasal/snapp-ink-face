@@ -11,8 +11,7 @@ class ApplyAiFilterApi {
     required String aiFilterName,
   }) async {
     Response response = await dio.get(
-      "${Urls.applyFilter}${aiFilterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
-      // "${Urls.applyFilter}${Urls.aiFilter}${aiFilterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
+     "${Urls.applyFilter}${Urls.aiFilter}${aiFilterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
 
       options: Options(responseType: ResponseType.bytes),
     );

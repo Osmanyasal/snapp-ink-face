@@ -1,4 +1,5 @@
 import 'package:filter/common/colors.dart';
+import 'package:filter/utils/global_function.dart';
 import 'package:filter/view/screens/home/widgets/background_widget.dart';
 import 'package:filter/view/screens/home/widgets/bottom_navigation_bar.dart';
 import 'package:filter/view/screens/home/widgets/file_image_widget.dart';
@@ -6,6 +7,8 @@ import 'package:filter/view/screens/home/widgets/filter_slider.dart';
 import 'package:filter/viewModels/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../infrastructure/apiUtil/urls.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home-screen';
@@ -18,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    Provider.of<HomeViewModel>(context, listen: false).registerService();
+    Urls.sessionId = getRandomString(28);
     super.initState();
   }
 

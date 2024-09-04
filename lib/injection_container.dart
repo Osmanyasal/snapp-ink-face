@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'infrastructure/apiUtil/urls.dart';
 import 'infrastructure/catalog_facade_service.dart';
+import 'infrastructure/home/api/register_ai_service_api.dart';
 import 'infrastructure/home/home_repository.dart';
 
 final GetIt serviceLocator = GetIt.instance;
@@ -33,6 +34,9 @@ registerApiCalls() {
   serviceLocator.registerLazySingleton(() => RegisterServiceApi(
         dio: serviceLocator(),
       ));
+      serviceLocator.registerLazySingleton(() => RegisterAiServiceApi(
+        dio: serviceLocator(),
+      ));
   serviceLocator.registerLazySingleton(() => ApplyFilterApi(
         dio: serviceLocator(),
       ));
@@ -50,6 +54,7 @@ registerViewModel() {
 registerRepository() {
   serviceLocator.registerLazySingleton(() => HomeRepository(
         registerServiceApi: serviceLocator(),
+        registerAiServiceApi: serviceLocator(),
         applyFilterApi: serviceLocator(),
         applyAiFilterApi: serviceLocator(),
       ));

@@ -25,6 +25,15 @@ class CatalogFacadeService {
       image: image,
     );
   }
+    Future<ResponseWrapper<dynamic>> registerAiService({
+
+    required XFile image,
+  }) async {
+    return await homeRepository.registerAiService(
+
+      image: image,
+    );
+  }
 
   Future<ResponseWrapper<dynamic>> applyFilter({
     required String filterName,
