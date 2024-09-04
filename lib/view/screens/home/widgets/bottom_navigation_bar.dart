@@ -46,7 +46,7 @@ class CustomNavigationBar extends StatelessWidget {
                 ),
               GestureDetector(
                 onTap: () {
-                  context.read<HomeViewModel>().requestPermissions(context);
+                  context.read<HomeViewModel>().requestPermissions(context,false);
                 },
                 child: Container(
                   height: 80,

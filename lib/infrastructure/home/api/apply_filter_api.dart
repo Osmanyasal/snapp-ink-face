@@ -12,12 +12,9 @@ class ApplyFilterApi {
   }) async {
 
     Response response = await dio.get(
-      "${Urls.applyFilter}${filterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
+   "${Urls.applyFilter}${filterName.replaceAll("-", "/")}?id=${Urls.sessionId}",
       options: Options(responseType: ResponseType.bytes),
     );
-
-   
-
     return response;
   }
 }

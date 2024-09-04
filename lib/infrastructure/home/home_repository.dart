@@ -3,18 +3,20 @@ import 'package:filter/infrastructure/home/api/apply_filter_api.dart';
 import 'package:filter/infrastructure/home/api/register_service_api.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 import '../apiUtil/response_wrappers.dart';
 import 'api/apply_ai_filter_api.dart';
+import 'api/register_ai_service_api.dart';
 import 'home_interface.dart';
 
 class HomeRepository implements HomeInterface {
   HomeRepository({
     required this.registerServiceApi,
+    required this.registerAiServiceApi,
     required this.applyFilterApi,
     required this.applyAiFilterApi,
   });
   final RegisterServiceApi registerServiceApi;
+  final RegisterAiServiceApi registerAiServiceApi;
   final ApplyFilterApi applyFilterApi;
   final ApplyAiFilterApi applyAiFilterApi;
 
@@ -23,6 +25,20 @@ class HomeRepository implements HomeInterface {
     required XFile image,
   }) async {
     Response response = await registerServiceApi.registerService(
+      image: image,
+    );
+    var res = ResponseWrapper<dynamic>();
+    res.status = response.statusCode;
+    res.data = response.data;
+    res.message = response.statusMessage;
+    return res;
+  }
+
+  @override
+  Future<ResponseWrapper<dynamic>> registerAiService({
+    required XFile image,
+  }) async {
+    Response response = await registerAiServiceApi.registerAiService(
       image: image,
     );
     var res = ResponseWrapper<dynamic>();
@@ -49,11 +65,9 @@ class HomeRepository implements HomeInterface {
   @override
   Future<ResponseWrapper<dynamic>> applyAiFilter({
     required String aiFilterName,
-
   }) async {
     Response response = await applyAiFilterApi.applyAiFilter(
       aiFilterName: aiFilterName,
-
     );
     var res = ResponseWrapper<dynamic>();
     res.status = response.statusCode;

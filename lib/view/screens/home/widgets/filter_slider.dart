@@ -4,7 +4,6 @@ import 'package:filter/utils/navigation_service.dart';
 import 'package:filter/viewModels/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../common/colors.dart';
 import '../../../commonWidgets/filter_dialog.dart';
 
@@ -51,8 +50,8 @@ class FilterSlider extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               GestureDetector(
-                                onTap: () =>
-                                    homeViewModel.requestPermissions(context),
+                                onTap: () => homeViewModel.requestPermissions(
+                                    context, false),
                                 child: Container(
                                   width: kWidth,
                                   height: 80,
@@ -123,8 +122,9 @@ class FilterSlider extends StatelessWidget {
                                                       filterAssetPath);
                                               await homeViewModel.applyFilter(
                                                   filterName: filtername);
-                                              await Future.delayed(
-                                                  const Duration(seconds: 4));
+                                              await Future.delayed(const Duration(
+                                                  seconds:
+                                                      4)); // ads for aiFilter applying
 
                                               homeViewModel
                                                   .applyingFilter(false);
@@ -132,14 +132,9 @@ class FilterSlider extends StatelessWidget {
                                                   .navigatorKey
                                                   .currentContext!);
                                               homeViewModel.changeFilterType(0);
-                                              homeViewModel
-                                                  .changePictureView(true);
-
+                                          
                                               homeViewModel.catalogFacadeService
                                                   .homeRepository;
-                                              homeViewModel.addProcessedImage(
-                                                  homeViewModel.processedImage);
-
                                               showToast(
                                                 message:
                                                     "Your picture is processed",
@@ -206,7 +201,7 @@ class FilterSlider extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () => homeViewModel
-                                        .requestPermissions(context),
+                                        .requestPermissions(context, true),
                                     child: Container(
                                       width: kWidth,
                                       height: 80,
@@ -280,20 +275,17 @@ class FilterSlider extends StatelessWidget {
                                                     .applyAiFilter(
                                                         aiFilterName:
                                                             filtername);
-                                                await Future.delayed(
-                                                    const Duration(seconds: 4));
+                                                await Future.delayed(const Duration(
+                                                    seconds:
+                                                        4)); // ads for aiFilter applying
                                                 homeViewModel
                                                     .applyingFilter(false);
                                                 Navigator.pop(NavigationService
                                                     .navigatorKey
                                                     .currentContext!);
                                                 homeViewModel
-                                                    .changeFilterType(1);
-                                                homeViewModel
-                                                    .changePictureView(false);
-                                                homeViewModel.addProcessedImage(
-                                                    homeViewModel
-                                                        .processedImage);
+                                                    .changeFilterType(0);
+                                    
                                                 showToast(
                                                   message:
                                                       "Your picture is processed",
