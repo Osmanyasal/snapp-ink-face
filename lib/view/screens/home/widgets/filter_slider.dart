@@ -226,7 +226,7 @@ class FilterSlider extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   const Text(
-                                    "Add Photo",
+                                    "Add Target",
                                     textAlign: TextAlign.center,
                                   ),
                                 ],

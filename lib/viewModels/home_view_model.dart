@@ -85,7 +85,7 @@ class HomeViewModel extends ChangeNotifier {
 
   final List<Map<String, String>> _aiFilters = [
     {"filter": Filters.normalImage, "name": "add"},
-    {"filter": Filters.normalImage, "name": "Normal"},
+    // {"filter": Filters.normalImage, "name": "Normal"},
 
     {"filter": AiFilters.face_swap_adventure_1, "name": "Adventure"}, 
     {"filter": AiFilters.face_swap_adventure_2, "name": "Adventure"}, 
