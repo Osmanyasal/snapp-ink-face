@@ -45,15 +45,41 @@ class Filters {
 }
 
 class AiFilters { 
-  static const String face_swap_adventure_1 = 'assets/images/ai_filters/adventure_1.png';
-  static const String face_swap_adventure_2 = 'assets/images/ai_filters/adventure_2.png';
-  static const String face_swap_adventure_3 = 'assets/images/ai_filters/adventure_3.png';
-  static const String face_swap_adventure_4 = 'assets/images/ai_filters/adventure_4.png';
-  static const String face_swap_adventure_5 = 'assets/images/ai_filters/adventure_5.png';
-  static const String face_swap_adventure_6 = 'assets/images/ai_filters/adventure_6.png';
-  static const String face_swap_adventure_7 = 'assets/images/ai_filters/adventure_7.png';
-  static const String face_swap_adventure_8 = 'assets/images/ai_filters/adventure_8.png';
-  static const String face_swap_adventure_9 = 'assets/images/ai_filters/adventure_9.png';
+  static const String face_swap_enhanced = 'assets/images/ai_filters/enhanced.png';
+
+  static const String face_swap_cv_1 = 'assets/images/ai_filters/cv_1.png';
+  static const String face_swap_cv_2 = 'assets/images/ai_filters/cv_2.png';
+  static const String face_swap_cv_3 = 'assets/images/ai_filters/cv_3.png';
+  static const String face_swap_cv_4 = 'assets/images/ai_filters/cv_4.png';
+  static const String face_swap_cv_5 = 'assets/images/ai_filters/cv_5.png';
+  static const String face_swap_cv_6 = 'assets/images/ai_filters/cv_6.png';
+  static const String face_swap_cv_7 = 'assets/images/ai_filters/cv_7.png';
+  static const String face_swap_cv_8 = 'assets/images/ai_filters/cv_8.png';
+  static const String face_swap_cv_9 = 'assets/images/ai_filters/cv_9.png';
+  static const String face_swap_cv_10 = 'assets/images/ai_filters/cv_10.png';
+
+
+
+  static const String face_swap_90s_1 = 'assets/images/ai_filters/90s_1.png';
+  static const String face_swap_90s_2 = 'assets/images/ai_filters/90s_2.png';
+  static const String face_swap_90s_3 = 'assets/images/ai_filters/90s_3.png';
+  static const String face_swap_90s_4 = 'assets/images/ai_filters/90s_4.png';
+  static const String face_swap_90s_5 = 'assets/images/ai_filters/90s_5.png';
+  static const String face_swap_90s_6 = 'assets/images/ai_filters/90s_6.png';
+  static const String face_swap_90s_7 = 'assets/images/ai_filters/90s_7.png';
+  static const String face_swap_90s_8 = 'assets/images/ai_filters/90s_8.png';
+  static const String face_swap_90s_9 = 'assets/images/ai_filters/90s_9.png';
+  static const String face_swap_90s_10 = 'assets/images/ai_filters/90s_10.png';
+  static const String face_swap_90s_11 = 'assets/images/ai_filters/90s_11.png';
+  static const String face_swap_90s_12 = 'assets/images/ai_filters/90s_12.png';
+  static const String face_swap_90s_13 = 'assets/images/ai_filters/90s_13.png';
+  static const String face_swap_90s_14 = 'assets/images/ai_filters/90s_14.png';
+  static const String face_swap_90s_15 = 'assets/images/ai_filters/90s_15.png';
+  static const String face_swap_90s_16 = 'assets/images/ai_filters/90s_16.png';
+  static const String face_swap_90s_17 = 'assets/images/ai_filters/90s_17.png';
+  static const String face_swap_90s_18 = 'assets/images/ai_filters/90s_18.png';
+  static const String face_swap_90s_19 = 'assets/images/ai_filters/90s_19.png';
+  static const String face_swap_90s_20 = 'assets/images/ai_filters/90s_20.png';
  
   static const String face_swap_beach_1 = 'assets/images/ai_filters/beach_1.png';
   static const String face_swap_beach_2 = 'assets/images/ai_filters/beach_2.png';
@@ -61,24 +87,21 @@ class AiFilters {
   static const String face_swap_beach_4 = 'assets/images/ai_filters/beach_4.png';
   static const String face_swap_beach_5 = 'assets/images/ai_filters/beach_5.png';
   static const String face_swap_beach_6 = 'assets/images/ai_filters/beach_6.png';
+  static const String face_swap_beach_7 = 'assets/images/ai_filters/beach_7.png';
+  static const String face_swap_beach_8 = 'assets/images/ai_filters/beach_8.png';
+  static const String face_swap_beach_9 = 'assets/images/ai_filters/beach_9.png';
+  static const String face_swap_beach_10 = 'assets/images/ai_filters/beach_10.png';
 
-  static const String face_swap_business_1 = 'assets/images/ai_filters/business_1.png';
-  static const String face_swap_business_2 = 'assets/images/ai_filters/business_2.png';
-  static const String face_swap_business_3 = 'assets/images/ai_filters/business_3.png';
-  static const String face_swap_business_4 = 'assets/images/ai_filters/business_4.png';
-  static const String face_swap_business_5 = 'assets/images/ai_filters/business_5.png';
-  static const String face_swap_business_6 = 'assets/images/ai_filters/business_6.png';
-  static const String face_swap_business_7 = 'assets/images/ai_filters/business_7.png';
-  static const String face_swap_business_8 = 'assets/images/ai_filters/business_8.png';
+  static const String face_swap_cyberpunk_1 = 'assets/images/ai_filters/cyberpunk_1.png';
+  static const String face_swap_cyberpunk_2 = 'assets/images/ai_filters/cyberpunk_2.png';
+  static const String face_swap_cyberpunk_3 = 'assets/images/ai_filters/cyberpunk_3.png';
+  static const String face_swap_cyberpunk_4 = 'assets/images/ai_filters/cyberpunk_4.png';
+  static const String face_swap_cyberpunk_5 = 'assets/images/ai_filters/cyberpunk_5.png';
+  static const String face_swap_cyberpunk_6 = 'assets/images/ai_filters/cyberpunk_6.png';
+  static const String face_swap_cyberpunk_7 = 'assets/images/ai_filters/cyberpunk_7.png';
+  static const String face_swap_cyberpunk_8 = 'assets/images/ai_filters/cyberpunk_8.png';
+  static const String face_swap_cyberpunk_9 = 'assets/images/ai_filters/cyberpunk_9.png';
 
-  static const String face_swap_fantasy_1 = 'assets/images/ai_filters/fantasy_1.png';
-  static const String face_swap_fantasy_2 = 'assets/images/ai_filters/fantasy_2.png';
-  static const String face_swap_fantasy_3 = 'assets/images/ai_filters/fantasy_3.png';
-  static const String face_swap_fantasy_4 = 'assets/images/ai_filters/fantasy_4.png';
-  static const String face_swap_fantasy_5 = 'assets/images/ai_filters/fantasy_5.png';
-  static const String face_swap_fantasy_6 = 'assets/images/ai_filters/fantasy_6.png';
-  static const String face_swap_fantasy_7 = 'assets/images/ai_filters/fantasy_7.png';
-  static const String face_swap_fantasy_8 = 'assets/images/ai_filters/fantasy_8.png';
 
   static const String face_swap_gym_1 = 'assets/images/ai_filters/gym_1.png';
   static const String face_swap_gym_2 = 'assets/images/ai_filters/gym_2.png';
@@ -88,67 +111,22 @@ class AiFilters {
   static const String face_swap_gym_6 = 'assets/images/ai_filters/gym_6.png';
   static const String face_swap_gym_7 = 'assets/images/ai_filters/gym_7.png';
   static const String face_swap_gym_8 = 'assets/images/ai_filters/gym_8.png';
+  static const String face_swap_gym_9 = 'assets/images/ai_filters/gym_9.png';
+  static const String face_swap_gym_10 = 'assets/images/ai_filters/gym_10.png';
+  static const String face_swap_gym_11 = 'assets/images/ai_filters/gym_11.png';
+  static const String face_swap_gym_12 = 'assets/images/ai_filters/gym_12.png';
+  static const String face_swap_gym_13 = 'assets/images/ai_filters/gym_13.png';
+  static const String face_swap_gym_14 = 'assets/images/ai_filters/gym_14.png';
 
-  static const String face_swap_heros_1 = 'assets/images/ai_filters/heros_1.png';
-  static const String face_swap_heros_2 = 'assets/images/ai_filters/heros_2.png';
-  static const String face_swap_heros_3 = 'assets/images/ai_filters/heros_3.png';
-  static const String face_swap_heros_4 = 'assets/images/ai_filters/heros_4.png';
-  static const String face_swap_heros_5 = 'assets/images/ai_filters/heros_5.png';
-  static const String face_swap_heros_6 = 'assets/images/ai_filters/heros_6.png';
-  static const String face_swap_heros_7 = 'assets/images/ai_filters/heros_7.png'; 
+  static const String face_swap_poloraid_1 = 'assets/images/ai_filters/poloraid_1.png';
+  static const String face_swap_poloraid_2 = 'assets/images/ai_filters/poloraid_2.png';
+  static const String face_swap_poloraid_3 = 'assets/images/ai_filters/poloraid_3.png';
+  static const String face_swap_poloraid_4 = 'assets/images/ai_filters/poloraid_4.png';
+  static const String face_swap_poloraid_5 = 'assets/images/ai_filters/poloraid_5.png';
+  static const String face_swap_poloraid_6 = 'assets/images/ai_filters/poloraid_6.png';
+  static const String face_swap_poloraid_7 = 'assets/images/ai_filters/poloraid_7.png';
+  static const String face_swap_poloraid_8 = 'assets/images/ai_filters/poloraid_8.png';
+  static const String face_swap_poloraid_9 = 'assets/images/ai_filters/poloraid_9.png';
+  static const String face_swap_poloraid_10 = 'assets/images/ai_filters/poloraid_10.png';
 
-  static const String face_swap_hippie_1 = 'assets/images/ai_filters/hippie_1.png';
-  static const String face_swap_hippie_2 = 'assets/images/ai_filters/hippie_2.png';
-  static const String face_swap_hippie_3 = 'assets/images/ai_filters/hippie_3.png';
-  static const String face_swap_hippie_4 = 'assets/images/ai_filters/hippie_4.png';
-  static const String face_swap_hippie_5 = 'assets/images/ai_filters/hippie_5.png';
-  static const String face_swap_hippie_6 = 'assets/images/ai_filters/hippie_6.png'; 
-
-  static const String face_swap_postmodern_1 = 'assets/images/ai_filters/postmodern_1.png';
-  static const String face_swap_postmodern_2 = 'assets/images/ai_filters/postmodern_2.png';
-  static const String face_swap_postmodern_3 = 'assets/images/ai_filters/postmodern_3.png';
-  static const String face_swap_postmodern_4 = 'assets/images/ai_filters/postmodern_4.png';
-  static const String face_swap_postmodern_5 = 'assets/images/ai_filters/postmodern_5.png';
-  static const String face_swap_postmodern_6 = 'assets/images/ai_filters/postmodern_6.png';
-  static const String face_swap_postmodern_7 = 'assets/images/ai_filters/postmodern_7.png';
-  static const String face_swap_postmodern_8 = 'assets/images/ai_filters/postmodern_8.png';
-
-  static const String face_swap_punk_1 = 'assets/images/ai_filters/punk_1.png';
-  static const String face_swap_punk_2 = 'assets/images/ai_filters/punk_2.png';
-  static const String face_swap_punk_3 = 'assets/images/ai_filters/punk_3.png';
-  static const String face_swap_punk_4 = 'assets/images/ai_filters/punk_4.png';
-
-  static const String face_swap_rogue_1 = 'assets/images/ai_filters/rogue_1.png';
-  static const String face_swap_rogue_2 = 'assets/images/ai_filters/rogue_2.png';
-  static const String face_swap_rogue_3 = 'assets/images/ai_filters/rogue_3.png';
-  static const String face_swap_rogue_4 = 'assets/images/ai_filters/rogue_4.png';
-  static const String face_swap_rogue_5 = 'assets/images/ai_filters/rogue_5.png';
-  static const String face_swap_rogue_6 = 'assets/images/ai_filters/rogue_6.png';
-  static const String face_swap_rogue_7 = 'assets/images/ai_filters/rogue_7.png';
-  static const String face_swap_rogue_8 = 'assets/images/ai_filters/rogue_8.png';
-
-  static const String face_swap_space_1 = 'assets/images/ai_filters/space_1.png';
-  static const String face_swap_space_2 = 'assets/images/ai_filters/space_2.png';
-  static const String face_swap_space_3 = 'assets/images/ai_filters/space_3.png';
-  static const String face_swap_space_4 = 'assets/images/ai_filters/space_4.png';
-  static const String face_swap_space_5 = 'assets/images/ai_filters/space_5.png';
-  static const String face_swap_space_6 = 'assets/images/ai_filters/space_6.png';
-  static const String face_swap_space_7 = 'assets/images/ai_filters/space_7.png';
-
-  static const String face_swap_sports_1 = 'assets/images/ai_filters/sports_1.png';
-  static const String face_swap_sports_2 = 'assets/images/ai_filters/sports_2.png';
-  static const String face_swap_sports_3 = 'assets/images/ai_filters/sports_3.png';
-  static const String face_swap_sports_4 = 'assets/images/ai_filters/sports_4.png';
-  static const String face_swap_sports_5 = 'assets/images/ai_filters/sports_5.png';
-  static const String face_swap_sports_6 = 'assets/images/ai_filters/sports_6.png';
-  static const String face_swap_sports_7 = 'assets/images/ai_filters/sports_7.png';
-
-  static const String face_swap_yellow_1 = 'assets/images/ai_filters/yellow_1.png';
-  static const String face_swap_yellow_2 = 'assets/images/ai_filters/yellow_2.png';
-  static const String face_swap_yellow_3 = 'assets/images/ai_filters/yellow_3.png';
-  static const String face_swap_yellow_4 = 'assets/images/ai_filters/yellow_4.png';
-  static const String face_swap_yellow_5 = 'assets/images/ai_filters/yellow_5.png';
-  static const String face_swap_yellow_6 = 'assets/images/ai_filters/yellow_6.png';
-  static const String face_swap_yellow_7 = 'assets/images/ai_filters/yellow_7.png';
-  static const String face_swap_yellow_8 = 'assets/images/ai_filters/yellow_8.png';
 }
